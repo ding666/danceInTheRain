@@ -1,4 +1,11 @@
-
+@font-face {
+    font-family: playFiarBoldItalic;
+    src: url(../fonts/PlayfairDisplay-BoldItalic.otf);
+}
+@font-face {
+    font-family: playFiarBold;
+    src: url(../fonts/PlayfairDisplay-Bold.otf);
+}
 
 /* 2nd example */
 html, body {
@@ -12,10 +19,32 @@ html, body, canvas {
 }
 canvas {
   position: absolute;
-  top: 40%;
-  left: 40%;
+  
+  top: 0%;
+  left: 0%;
   /* if you change the h and w values in the js, 
   change top and left respectively to half the js values */
-  margin-top: -160px;
-  margin-left: -340px;
+/*   margin-top: -160px; */
+/*   margin-left: -340px; */
+  z-index:-1;
+
+/*   display: table; */
+/*   width: 100%; */
+/*   height: auto; */
+/*   padding: 100px 0; */
+/*   text-align: center; */
+}
+
+.main-topic {
+	font-family: playFiarBoldItalic;
+	text-shadow: 2px 2px aliceblue;
+	font-size:4em;
+	color: blueviolet;	
+}
+
+.sub-topic {
+	font-family: playFiarBold;
+	text-shadow: 2px 2px aliceblue;
+	font-size:2em;
+	color: navy;	
 }

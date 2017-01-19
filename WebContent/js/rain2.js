@@ -87,7 +87,7 @@ function random_drop() {
 	drop.speed = Math.random() * (drop.distance / 2) + 3;
 	// slower you go, smaller you are
 	//drop.size = (drop.speed + 1) / 16 * 18;
-	drop.size = 0.7*(drop.speed + 1) / 16 * 18;
+	drop.size = 0.5*(drop.speed + 1) / 16 * 18;
 
 	// smaller you are, sooner you'll hit
 	drop.limit = (drop.speed + 1) / 9 * h;
@@ -104,17 +104,20 @@ function init() {
 	}
 	console.log("asdf canvas=" + canvas);
 
-	ctx = canvas.getContext('2d'),
-	x = 0,
-	y = 0,
+	ctx = canvas.getContext('2d');
+	x = 0;
+	y = 0;
 	   // number of drops
 	//		   len = 1024, 
-	len = 2048, 
+	len = 2048;
 	// optimized for codepen.io in my browser
-	//	   h = canvas.height = 320,
-	//	   w = canvas.width = 480,
-	h = canvas.height = 600,
-	w = canvas.width = 800,	   collection, bg_img, drop_img;	   
+//		   h = canvas.height = $(document).width();
+//		   w = canvas.width = $(document).height();
+		   h = canvas.height = window.innerHeight || document.documentElement.clientHeight ||document.body.clientHeight;
+		   w = canvas.width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;	   
+//	h = canvas.height = 600,
+//	w = canvas.width = 800,	   
+  collection, bg_img, drop_img;	   
 	   
 	bg_img = new Image();
 	// found on google images - did a reverse search and it's a magic card graphic?
@@ -124,7 +127,9 @@ function init() {
 
 	drop_img = new Image();
 	// found on google images. url looks pretty legit - I think I'm ok.
-	drop_img.src = 'http://free.clipartof.com/62-Free-Water-Drop-Clipart-Illustration.png';
+//	drop_img.src = 'http://free.clipartof.com/62-Free-Water-Drop-Clipart-Illustration.png';
+	drop_img.src = 'images/rainDrop.png';
+
 	randomize_drops();
 	loop();
 }
