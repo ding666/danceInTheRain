@@ -48,3 +48,13 @@ canvas {
 	font-size:2em;
 	color: navy;	
 }
+
+.pledge-section {
+  background: url(../images/sunset.jpg) no-repeat center center scroll;
+  width: 100%;
+  height: 100%; 
+}
+
+.pledge {
+  color: blue;
+}
