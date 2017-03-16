@@ -1,0 +1,38 @@
+{
+    "deploy": {
+        "button": {
+            "enabled": true,
+            "text": "Deploy my stuff!",
+            "packages": [
+                "Project 1"
+            ]
+        },
+        "packages": [
+            {
+                "name": "Version 2.3.4",
+                "description": "Package version 2.3.4",
+                "files": [
+                    "**/*.php",
+                    "/*.json"
+                ],
+                "exclude": [
+                    "tests/**"
+                ],
+                "deployOnSave": true
+            }
+        ],
+        "targets": [
+            {
+                "type": "ftp",
+                "name": "My FTP folder",
+                "description": "A FTP folder",
+                "dir": "/public_html/danceInTheRain",
+                "host": "ftp.across-pacific.com",
+                "port": 21,
+                "secure": false,
+                "user": "acrossp1",
+                "password": "P@assword123!"
+            }
+        ]
+    }
+}
