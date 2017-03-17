@@ -12,6 +12,8 @@
                 "name": "Version 2.3.4",
                 "description": "Package version 2.3.4",
                 "files": [
+                    "js/*.js",
+                    "**/*.html",
                     "**/*.php",
                     "/*.json"
                 ],
@@ -24,14 +26,14 @@
         "targets": [
             {
                 "type": "ftp",
-                "name": "My FTP folder",
+                "name": "/public_html/danceInTheRain",
                 "description": "A FTP folder",
                 "dir": "/public_html/danceInTheRain",
                 "host": "ftp.across-pacific.com",
                 "port": 21,
                 "secure": false,
                 "user": "acrossp1",
-                "password": "P@assword123!"
+                "password": "@pA=1688"
             }
         ]
     }

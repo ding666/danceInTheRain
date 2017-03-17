@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="Chunping Ding">
+    <meta name="author" content="melodyding Ding">
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
@@ -19,7 +19,11 @@
     <title>Dancing In The Rain</title>
     <link rel="stylesheet" href="css/main.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js">
+
+    </script>
     <script src="js/rain2.js"></script>
+    <script src="js/app.js"></script>
 </head>
 
 <body onload="init()" id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
@@ -46,10 +50,10 @@
                     <li>
                         <a class="page-scroll" href="#pledge">Pledge</a>
                     </li>
-                     <li>
+                    <li>
                         <a class="page-scroll" href="#action">Action</a>
                     </li>
-                   <li>
+                    <li>
                         <a class="page-scroll" href="#contact">Contact</a>
                     </li>
                 </ul>
@@ -89,11 +93,9 @@
                     <h2 style="padding-top: 2em">Pledge To Love Myself</h2>
                     <div style="padding: 3% 1% 1px 1%">
                         <p class="pledge">
-                            I am going to love myself, forgive myself, be true to myself.
-                          I will watch my body grow in the healthy way. 
-                        I will embrace my soul with joy. 
-                            When I have desires which could hurt any of them, I look for
-                        things or help to make them feel loved.
+                            I am going to love myself, forgive myself, be true to myself. I will watch my body grow in the healthy way. I will embrace
+                            my soul with joy. When I have desires which could hurt any of them, I look for things or help
+                            to make them feel loved.
                         </p>
                     </div>
                     <button class="btn btn-default btn-lg">I pledge</button>
@@ -103,30 +105,43 @@
 
                             <legend>Pledge Made</legend>
 
-                                <div class="pledgeNum">15,236<div>
+                            <div class="pledgeNum">15,236
+                                <div>
                         </fieldset>
+                        </div>
+
+                        <br><br>
+                        <h2> Pledge to Help Others</h2>
+                        <p class="pledge">I'm going out to make some good things happen, to my friends, to my neighbors, to my school, to my
+                            community and to the world.
+                        </p>
+                        <button class="btn btn-default btn-lg">I pledge</button>
+                        <br><br>
+                        <div align="center">
+                            <fieldset style="border: 3px blueviolet solid; width: 60%">
+
+                                <legend>Pledge Made</legend>
+
+                                <div class="pledgeNum">2,248 <br />
+                            </fieldset>
+                            </div>
+                        </div>
+                        </div>
                     </div>
-
-                    <br><br>
-                    <h2> Pledge to Help Others</h2>
-                    <p class="pledge">I'm going out to make some good things happen, to my friends, to my neighbors, to my school, to my community
-                        and to the world.
-                    </p>
-                   <button class="btn btn-default btn-lg">I pledge</button>
-                   <br><br>
-                    <div align="center">
-                        <fieldset style="border: 3px blueviolet solid; width: 60%">
-
-                            <legend>Pledge Made</legend>
-
-                                <div class="pledgeNum">2,248 <br /> 
-                        </fieldset>
-                    </div>                    
-                </div>
-            </div>
+    </section>
+ 
+    <!-- Action section -->
+    <section id="action" class="container content-section text-center">
+        <div ng-app="dance" ng-controller="actionCtrl">
+            <table>
+                <tr ng-repeat="x in projects">
+                    <td>{{ x.name }}</td>
+                    <td>{{ x.description }}</td> 
+                </tr>
+            </table>
+            apa name = {{name}};
         </div>
     </section>
-
     <!-- Contact Section -->
     <section id="contact" class="container content-section text-center">
         <div class="row">
