@@ -129,19 +129,85 @@
                         </div>
                     </div>
     </section>
- 
+
     <!-- Action section -->
     <section id="action" class="container content-section text-center">
         <div ng-app="dance" ng-controller="actionCtrl">
-            <table>
-                <tr ng-repeat="x in projects">
-                    <td>{{ x.name }}</td>
-                    <td>{{ x.description }}</td> 
-                </tr>
-            </table>
-            apa name = {{name}};
-        </div>
+            <h2> Action </h2>
+
+            <div ng-hide="hideProjList">
+                <p align="left">To join an existing project, click the project name in the table. </p>
+
+                <table class="table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tr ng-repeat="x in projects">
+                        <td align="left" ng-click="projDetail(x.id)">
+                            <a>
+                                <u>{{ x.name }}</u>
+                            </a>
+                        </td>
+                        <td align="left">{{ x.description }}</td>
+                    </tr>
+                </table>
+
+                <button type="button" ng-click="createProj()" class="btn btn-primary" style="margin: 15px">Create your own project</button>
+            </div>
+
+            <div ng-show="showCreateProj">
+                <div align="center">
+                    <fieldset style="border: 3px white solid;">
+                        <legend>Initiate A Project</legend>
+                        <form action="">
+                            <p style="text-align: left; padding-left: 10px; padding-bottom: 0px; margin-bottom: 10px">Project Name:</p>
+                            <div align="left"> <input ng-model="projName" type="text" size="90%" style="padding-left: 10px; background-color: #114444"
+                                    placeholder="Input project name here"></div>
+
+                            <p style="text-align: left; padding-left: 10px; margin-top: 20px; margin-bottom: 10px"> Project Description:</p>
+
+                            <div align="left">
+                                <textarea rows="8" cols="80" style="background-color: #114444" ng-model="projDescription" placeholder="Pust project description here.">
+                            </textarea>
+                            </div>
+                            <p></p>
+                            <h4>Project Initiator Information</h4>
+
+                            <div>
+                            <input ng-model="furstName" type="text" placeholder="First name" style="padding-left: 10px; background-color: #114444">
+                            <input ng-model="lastName" type="text" placeholder="Last name" style="padding-left: 10px; background-color: #114444">
+                            </div>
+      
+                            <input ng-model="email" type="text" placeholder="email" style="padding-left: 10px; background-color: #114444">
+                            <input ng-model="phone" type="text" placeholder="Phone, e.g. 123-456-7890" style="padding-left: 10px; background-color: #114444">
+                            <br>
+
+                            <input ng-model="city" type="text" placeholder="city" style="padding-left: 10px; background-color: #114444">
+                            <input ng-model="state" type="text" placeholder="state, e.g. NJ" style="padding-left: 10px; background-color: #114444">
+                            <input ng-model="country" type="text" placeholder="Country, e.g. USA" style="padding-left: 10px; background-color: #114444">
+                            <br>
+   
+               
+
+                      
+
+                        </form>
+
+                    </fieldset>
+                </div>
+                <div>
+                    <button type="button" ng-click="saveProj()" class="btn btn-primary" style="margin: 15px">Save</button>
+                    <button type="button" ng-click="cancelProj()" class="btn btn-primary" style="margin: 15px">Cancel</button>
+                </div>
+
+
+
+            </div>
     </section>
+
     <!-- Contact Section -->
     <section id="contact" class="container content-section text-center">
         <div class="row">
