@@ -4,6 +4,7 @@ $servername = "localhost";
 $username = "acrossp1_ding";
 $password = "asdf1234";
 $dbname = "acrossp1_dance";
+echo "hello\n";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -39,5 +40,5 @@ if ($result->num_rows > 0) {
     echo "0 results";
 }
 $conn->close();
-
+exit(200);
 ?>
