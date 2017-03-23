@@ -36,23 +36,14 @@ app.controller('actionCtrl', function ($scope, $http) {
             data: $scope.proj,
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
         }).then(function (response) {
-                $scope.codeStatus = response.data;
-                console.log("respnse=");
-                console.log(response);
-            });
+            console.log("respnse=");
+            console.log(response);
+            if (response.data.status == "200") {
+                
+            }
+
+        });
         return false;
-
-
-        console.log($scope.projName);
-        console.log($scope.projDescription);
-        console.log($scope.firstName);
-        console.log($scope.lastName);
-        console.log($scope.email);
-        console.log($scope.phone);
-        console.log($scope.city);
-        console.log($scope.state);
-        console.log($scope.country);
-
 
     }
 });
