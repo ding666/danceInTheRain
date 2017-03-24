@@ -1,6 +1,7 @@
 var app = angular.module('dance', ['ui.bootstrap.modal']);
 app.controller('actionCtrl', function ($scope, $http) {
     $scope.hideProjList = false;
+//     $scope.showCreateProj = true;
     console.log("Inside controller");
     $http.get("listProjects.php")
         .then(function (response) {
