@@ -1,4 +1,4 @@
-var app = angular.module('dance', []);
+var app = angular.module('dance', ['ui.bootstrap.modal']);
 app.controller('actionCtrl', function ($scope, $http) {
     $scope.hideProjList = false;
     console.log("Inside controller");
@@ -10,6 +10,13 @@ app.controller('actionCtrl', function ($scope, $http) {
 
     $scope.projDetail = function (id) {
         console.log(id);
+        $scope.showJoinProj = true;
+        $http.get("projDetail.php?id="+id)
+            .then(function (response) {
+                console.log("project detail:")
+                console.log(response);
+                $scope.projInfo = response.data;
+            });
     }
 
     $scope.createProj = function () {
@@ -22,13 +29,6 @@ app.controller('actionCtrl', function ($scope, $http) {
         var method = 'POST';
         var url = 'createProject.php';
         $scope.codeStatus = "";
-        // var FormData = {
-        //     'projName':$scope.projName,
-        //     'projDescription': $scope.projDescription,
-        //     'firstName': $scope.firstName,
-        //     'lastName': $scope.lastName,
-        //     'email': $scope
-        // };
 
         $http({
             method: method,
@@ -38,13 +38,30 @@ app.controller('actionCtrl', function ($scope, $http) {
         }).then(function (response) {
             console.log("respnse=");
             console.log(response);
-            if (response.data.status == "200") {
-                
+            if (response.status == "200") {
+                $http.get("listProjects.php")
+                    .then(function (response) {
+                        console.log(response);
+                        $scope.projects = response.data;
+                    });
+                $scope.showModal = true;
+                console.log("show modal");
+                $scope.showCreateProj = false;
+                $scope.hideProjList = false;
+                $("#myModal").modal();
+                $scope.projName = response.config.data.projName;
             }
 
         });
+
+
         return false;
 
+    }
+
+    $scope.cancelProj = function () {
+        $scope.showCreateProj = false;
+        $scope.hideProjList = false;
     }
 });
 // 

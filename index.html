@@ -19,9 +19,10 @@
     <title>Dancing In The Rain</title>
     <link rel="stylesheet" href="css/main.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="vendor/bootstrap/js/ui-bootstrap-tpls-2.5.0.min.js"></script>
 
-    </script>
     <script src="js/rain2.js"></script>
     <script src="js/app.js"></script>
 </head>
@@ -157,30 +158,29 @@
 
                 <button type="button" ng-click="createProj()" class="btn btn-primary" style="margin: 15px">Create your own project</button>
             </div>
-
-            <div ng-show="showCreateProj">
+            <div ng-show="showJoinProj" id="popupJoinProj">
                 <div align="center">
                     <fieldset style="border: 3px white solid;">
-                        <legend>Initiate A Project</legend>
+                        <legend>Join A Project</legend>
+
+
+                        <p>Project Name: {{projInfo.name}}</p>
+                        <p>Project Description: {{projInfo.description}}</p>
+
+                        <p>Project Owner:</p>
+                        <p>{{projInfo.owner.firstName}} {{projInfo.owner.lastName}}</p>
+                        <p>{{projInfo.owner.email}}, {{projInfo.owner.phone}} </p>
+                        <p>{{projInfo.owner.city}}, {{projInfo.owner.state}}, {{projInfo.owner.country}}</p>
+
                         <form action="">
-                            <p style="text-align: left; padding-left: 10px; padding-bottom: 0px; margin-bottom: 10px">Project Name:</p>
-                            <div align="left"> <input ng-model="proj.projName" type="text" size="90%" style="padding-left: 10px; background-color: #114444"
-                                    placeholder="Input project name here"></div>
 
-                            <p style="text-align: left; padding-left: 10px; margin-top: 20px; margin-bottom: 10px"> Project Description:</p>
-
-                            <div align="left">
-                                <textarea rows="8" cols="80" style="background-color: #114444" ng-model="proj.projDescription" placeholder="Pust project description here.">
-                            </textarea>
-                            </div>
-                            <p></p>
-                            <h4>Project Initiator Information</h4>
+                            <h4>Your Information</h4>
 
                             <div>
-                            <input ng-model="proj.firstName" type="text" placeholder="First name" style="padding-left: 10px; background-color: #114444">
-                            <input ng-model="proj.lastName" type="text" placeholder="Last name" style="padding-left: 10px; background-color: #114444">
+                                <input ng-model="proj.firstName" type="text" placeholder="First name" style="padding-left: 10px; background-color: #114444">
+                                <input ng-model="proj.lastName" type="text" placeholder="Last name" style="padding-left: 10px; background-color: #114444">
                             </div>
-      
+
                             <input ng-model="proj.email" type="text" placeholder="email" style="padding-left: 10px; background-color: #114444">
                             <input ng-model="proj.phone" type="text" placeholder="Phone, e.g. 123-456-7890" style="padding-left: 10px; background-color: #114444">
                             <br>
@@ -189,23 +189,77 @@
                             <input ng-model="proj.state" type="text" placeholder="state, e.g. NJ" style="padding-left: 10px; background-color: #114444">
                             <input ng-model="proj.country" type="text" placeholder="Country, e.g. USA" style="padding-left: 10px; background-color: #114444">
                             <br>
-   
-               
-
-                      
-
                         </form>
-
                     </fieldset>
+                    <div>
+                        <button type="button" ng-click="joinProj()" class="btn btn-primary" style="margin: 15px">Join</button>
+                        <button type="button" ng-click="cancelJoinProj()" class="btn btn-primary" style="margin: 15px">Cancel</button>
+                    </div>
                 </div>
-                <div>
-                    <button type="button" ng-click="saveProj()" class="btn btn-primary" style="margin: 15px">Save</button>
-                    <button type="button" ng-click="cancelProj()" class="btn btn-primary" style="margin: 15px">Cancel</button>
+
+
+                <div ng-show="showCreateProj" id="popupContainer">
+                    <div align="center">
+                        <fieldset style="border: 3px white solid;">
+                            <legend>Initiate A Project</legend>
+                            <form action="">
+                                <p style="text-align: left; padding-left: 10px; padding-bottom: 0px; margin-bottom: 10px">Project Name:</p>
+                                <div align="left"> <input ng-model="proj.projName" type="text" size="90%" style="padding-left: 10px; background-color: #114444"
+                                        placeholder="Input project name here"></div>
+
+                                <p style="text-align: left; padding-left: 10px; margin-top: 20px; margin-bottom: 10px"> Project Description:</p>
+
+                                <div align="left">
+                                    <textarea rows="8" cols="80" style="background-color: #114444" ng-model="proj.projDescription" placeholder="Pust project description here.">
+                            </textarea>
+                                </div>
+                                <p></p>
+                                <h4>Project Initiator Information</h4>
+
+                                <div>
+                                    <input ng-model="proj.firstName" type="text" placeholder="First name" style="padding-left: 10px; background-color: #114444">
+                                    <input ng-model="proj.lastName" type="text" placeholder="Last name" style="padding-left: 10px; background-color: #114444">
+                                </div>
+
+                                <input ng-model="proj.email" type="text" placeholder="email" style="padding-left: 10px; background-color: #114444">
+                                <input ng-model="proj.phone" type="text" placeholder="Phone, e.g. 123-456-7890" style="padding-left: 10px; background-color: #114444">
+                                <br>
+
+                                <input ng-model="proj.city" type="text" placeholder="city" style="padding-left: 10px; background-color: #114444">
+                                <input ng-model="proj.state" type="text" placeholder="state, e.g. NJ" style="padding-left: 10px; background-color: #114444">
+                                <input ng-model="proj.country" type="text" placeholder="Country, e.g. USA" style="padding-left: 10px; background-color: #114444">
+                                <br>
+                            </form>
+                        </fieldset>
+                    </div>
+                    <div>
+                        <button type="button" ng-click="saveProj()" class="btn btn-primary" style="margin: 15px">Save</button>
+                        <button type="button" ng-click="cancelProj()" class="btn btn-primary" style="margin: 15px">Cancel</button>
+                    </div>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title" style="color:black">Project is Saved</h4>
+                            </div>
+                            <div class="modal-body" style="color:black">
+                                <p>Your project, <b>{{projName}}</b>, was saved.</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
 
 
-
-            </div>
     </section>
 
     <!-- Contact Section -->
