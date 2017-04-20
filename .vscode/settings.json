@@ -15,7 +15,9 @@
                     "js/*.js",
                     "**/*.html",
                     "**/*.php",
-                    "/*.json"
+                    "/*.json",
+                    "vendor/bootstrap/js/*.js",
+                    "css/*.css"
                 ],
                 "exclude": [
                     "tests/**"
@@ -33,7 +35,7 @@
                 "port": 21,
                 "secure": false,
                 "user": "acrossp1",
-                "password": ""
+                "password": "@pA=1688"
             }
         ]
     }

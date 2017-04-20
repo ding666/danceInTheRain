@@ -6,7 +6,7 @@
     font-family: playFiarBold;
     src: url(../fonts/PlayfairDisplay-Bold.otf);
 }
-
+ 
 /* 2nd example */
 html, body {
   height: 100%;
@@ -45,7 +45,7 @@ canvas {
 .sub-topic {
 	/*font-family: playFiarBold;*/
 	text-shadow: 2px 2px aliceblue;
-	font-size:2em;
+	font-size:1em;
 	color: navy;	
 }
 
@@ -58,6 +58,11 @@ canvas {
 .pledge {
   color: blue;
   font-size: 2em;
+      border-radius: 25px;
+    background: #73AD21;
+    padding: 20px; 
+    /*width: 200px;
+    height: 150px; */
 }
 
 .pledgeNum {
