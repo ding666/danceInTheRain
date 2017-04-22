@@ -90,7 +90,7 @@
 
     <canvas id="cvs" align="center"></canvas>
 
-    <!-- Intro Header -->
+    <!-- Cover Page-->
     <header class="intro">
         <div class="intro-body">
             <div class="container">
@@ -101,7 +101,7 @@
 
                         <p class="sub-topic">When you dance in rain, you will see the rain drops dancing with your rhythm.
                         </p>
-                        <a href="#about" class="btn btn-circle page-scroll">
+                        <a href="#pledge" class="btn btn-circle page-scroll">
                             <i class="fa fa-angle-double-down animated"></i>
                         </a>
                     </div>
@@ -123,9 +123,29 @@
 
                         <div style="padding: 3% 1% 1px 1%">
                             <div class="pledge">
-                                <b>Love Myself</b><br> <br>I am going to love myself, forgive myself, be true to myself. I will
-                                watch my body grow in the healthy way. I will embrace my soul with joy. When I have desires
-                                which could hurt any of them, I look for things or help to make them feel loved.
+                                <b>Love Myself</b><br> <br>I am going to love myself, forgive myself, be true to myself.
+                                I will watch my body grow in the healthy way. I will embrace my soul with joy. When I have
+                                desires which could hurt any of them, I look for things or help to make them feel loved.
+                            </div>
+                        </div>
+                        <button ng-click="Ipledge(1)" class="btn btn-default btn-lg pledge-button">I pledge</button>
+                        <br><br>
+                        <div align="center">
+                            <fieldset class="fieldset">
+
+                                <legend>Pledge Made</legend>
+
+                                <div class="pledgeNum">{{pledgeN.pledge1}}</div>
+                            </fieldset>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div style="padding: 3% 1% 1px 1%">
+                            <div class="pledge">
+                                <b>Help Others</b><br> <br>I'm going out to make some good things happen, to my friends,
+                                to my neighbors, to my school, to my community and to the world.
+                                <br><br><br><br>
                             </div>
                         </div>
                         <button class="btn btn-default btn-lg pledge-button">I pledge</button>
@@ -135,31 +155,15 @@
 
                                 <legend>Pledge Made</legend>
 
-                                <div class="pledgeNum">15,236</div>
-                            </fieldset>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6">
-                        <div style="padding: 3% 1% 1px 1%">
-                            <div class="pledge">
-                                <b>Help Others</b><br> <br>I'm going out to make some good things happen, to my friends, to my
-                                neighbors, to my school, to my community and to the world.
-                                <br><br><br><br>
-                            </div>
-                        </div>
-                        <button class="btn btn-default btn-lg pledge-button">I pledge</button>
-                         <br><br>
-                        <div align="center">
-                            <fieldset class="fieldset">
-
-                                <legend>Pledge Made</legend>
-
                                 <div class="pledgeNum">2,248</div>
                             </fieldset>
-                        </div>                       
+                        </div>
                     </div>
+                    <a href="#action" class="btn btn-circle page-scroll">
+                        <i class="fa fa-angle-double-down animated"></i>
+                    </a>
                 </div>
+
             </div>
     </section>
 

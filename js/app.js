@@ -1,7 +1,26 @@
 var app = angular.module('dance', ['ui.bootstrap.modal']);
-app.controller('actionCtrl', function ($scope, $http) {
+
+// define a service, to read/update the dance database
+app.factory('crudDB', function ($http) {
+    var factory = {};
+    factory.getPledgeN = function () {
+        $http.get("getPledgeN.php")
+            .then(function (response) {
+                console.log("pledgeN = ")
+                console.log(response);
+                return response.data;
+            });
+    }
+    return factory;
+});
+
+app.controller('actionCtrl', function ($scope, $http, crudDB) {
+    $scope.pledgeN = crudDB.getPledgeN();
+                console.log("pledgeN in controller")
+                console.log($scope.pledgeN);   
+
     $scope.hideProjList = false;
-//     $scope.showCreateProj = true;
+    //     $scope.showCreateProj = true;
     console.log("Inside controller");
     $http.get("listProjects.php")
         .then(function (response) {
@@ -12,7 +31,7 @@ app.controller('actionCtrl', function ($scope, $http) {
     $scope.projDetail = function (id) {
         console.log(id);
         $scope.showJoinProj = true;
-        $http.get("projDetail.php?id="+id)
+        $http.get("projDetail.php?id=" + id)
             .then(function (response) {
                 console.log("project detail:")
                 console.log(response);
