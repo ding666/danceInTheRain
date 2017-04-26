@@ -4,20 +4,30 @@ var app = angular.module('dance', ['ui.bootstrap.modal']);
 app.factory('crudDB', function ($http) {
     var factory = {};
     factory.getPledgeN = function () {
-        $http.get("getPledgeN.php")
-            .then(function (response) {
-                console.log("pledgeN = ")
-                console.log(response);
-                return response.data;
-            });
+        console.log("called getPledgeN");
+        return $http.get("getPledgeN.php");
+
+        // $http.get("getPledgeN.php")
+        //     .then(function (response) {
+        //         console.log("in Factory pledgeN = ")
+        //         console.log(response);
+        //         return response.data;
+        //     });
     }
     return factory;
 });
 
 app.controller('actionCtrl', function ($scope, $http, crudDB) {
-    $scope.pledgeN = crudDB.getPledgeN();
-                console.log("pledgeN in controller")
-                console.log($scope.pledgeN);   
+
+    $scope.pledgeN= {};
+    crudDB.getPledgeN().then(function(result) {
+        var p1=parseInt(result.data.pledge1);
+        $scope.pledgeN.pledge1=p1.toLocaleString();
+        var p2=parseInt(result.data.pledge2);
+        $scope.pledgeN.pledge2=p2.toLocaleString();
+
+
+    });
 
     $scope.hideProjList = false;
     //     $scope.showCreateProj = true;

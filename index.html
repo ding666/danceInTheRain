@@ -49,7 +49,7 @@
 
 </head>
 
-<body onload="init()" id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<body ng-app="dance" ng-controller="actionCtrl" onload="init()" id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 
     <!-- Navigation -->
     <!--<nav class="navbar navbar-default" role="navigation">-->
@@ -134,7 +134,6 @@
                             <fieldset class="fieldset">
 
                                 <legend>Pledge Made</legend>
-
                                 <div class="pledgeNum">{{pledgeN.pledge1}}</div>
                             </fieldset>
                         </div>
@@ -155,7 +154,7 @@
 
                                 <legend>Pledge Made</legend>
 
-                                <div class="pledgeNum">2,248</div>
+                                <div class="pledgeNum">{{pledgeN.pledge2}}</div>
                             </fieldset>
                         </div>
                     </div>
@@ -169,7 +168,9 @@
 
     <!-- Action section -->
     <section id="action" class="container content-section text-center">
-        <div ng-app="dance" ng-controller="actionCtrl">
+        <!--<div ng-app="dance" ng-controller="actionCtrl">-->
+        <div>
+
             <h2> Action </h2>
 
             <div ng-hide="hideProjList">
