@@ -1,5 +1,26 @@
 var app = angular.module('dance', ['ui.bootstrap.modal']);
 
+app.config(function ($httpProvider) {
+    $httpProvider.interceptors.push('responseObserver');
+});
+
+app.factory('responseObserver', function responseObserver($q, $window) {
+    return {
+        'responseError': function (errorResponse) {
+            switch (errorResponse.status) {
+                case 403:
+                    //            $window.location = './403.html';
+                    console.log("Got a 403 error");
+                    break;
+                case 500:
+                    $window.location = './500.html';
+                    break;
+            }
+            return $q.reject(errorResponse);
+        }
+    };
+});
+
 // define a service, to read/update the dance database
 app.factory('crudDB', function ($http) {
     var factory = {};
@@ -14,20 +35,50 @@ app.factory('crudDB', function ($http) {
         //         return response.data;
         //     });
     }
+    factory.setPledgeN = function (p1, p2) {
+        // we should use put, instead of get in the following. However. justhost
+        // forbidden put method unless we set a htaccess file
+        return $http.get("setPledgeN.php?p1="+p1+"&"+"p2="+p2);
+        //      return $http.put("setPledgeN.php?p1="+p1+"&"+"p2="+p2);
+        // return $http.put("setPledgeN.php?",
+        // {},
+        // {params: {p1: p1, p2: p2}} );
+
+    }
     return factory;
 });
 
-app.controller('actionCtrl', function ($scope, $http, crudDB) {
+app.controller('rainCtrl', function ($scope, $http, crudDB) {
 
-    $scope.pledgeN= {};
-    crudDB.getPledgeN().then(function(result) {
-        var p1=parseInt(result.data.pledge1);
-        $scope.pledgeN.pledge1=p1.toLocaleString();
-        var p2=parseInt(result.data.pledge2);
-        $scope.pledgeN.pledge2=p2.toLocaleString();
-
-
+    var pledge1 = 0;
+    var pledge2 = 0;
+    $scope.pledgeN = {};
+    crudDB.getPledgeN().then(function (result) {
+        pledge1 = parseInt(result.data.pledge1);
+        $scope.pledgeN.pledge1 = pledge1.toLocaleString();
+        pledge2 = parseInt(result.data.pledge2);
+        $scope.pledgeN.pledge2 = pledge2.toLocaleString();
     });
+
+    $scope.Ipledge = function (pledgeN) {
+        if (pledgeN == 1) {
+            pledge1++;
+            $scope.pledgeN.pledge1 = pledge1.toLocaleString();
+        } else {
+            pledge2++;
+            $scope.pledgeN.pledge2 = pledge2.toLocaleString();
+        }
+        crudDB.setPledgeN(pledge1, pledge2).then(function (result) {
+            console.log("pledge good result=");
+            console.log(result);
+        }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+            console.log("pledge error result=");
+            console.log(response);
+
+        });
+    };
 
     $scope.hideProjList = false;
     //     $scope.showCreateProj = true;
