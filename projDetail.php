@@ -1,12 +1,12 @@
 #!/usr/local/bin/php
 <?php
 $servername = "localhost";
-$username = "acrossp1_ding";
-$password = "asdf1234";
-$dbname = "acrossp1_dance";
+$username = "lehmannp_admin";
+$password = "melody123";
+$dbname = "lehmannp_dance";
 
 $id = $_GET['id'];
-// $id = 2;
+ // $id = 1;
 
 // echo json_encode($proj);
 // exit(200);

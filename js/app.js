@@ -100,6 +100,13 @@ app.controller('rainCtrl', function ($scope, $http, crudDB) {
             });
     }
 
+    $scope.cancelJoinProj = function () {
+        console.log("asdf");
+        $scope.showJoinProj = false; 
+    }
+
+
+
     $scope.createProj = function () {
         console.log("Hello");
         $scope.showCreateProj = true;

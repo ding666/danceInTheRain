@@ -4,9 +4,9 @@
 // To get the 2 pledge numbers
 
 $servername = "localhost";
-$username = "acrossp1_ding";
-$password = "asdf1234";
-$dbname = "acrossp1_dance";
+$username = "lehmannp_admin";
+$password = "melody123";
+$dbname = "lehmannp_dance";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
