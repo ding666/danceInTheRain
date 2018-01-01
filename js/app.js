@@ -118,6 +118,9 @@ app.controller('rainCtrl', function ($scope, $http, crudDB) {
         var url = 'createProject.php';
         $scope.codeStatus = "";
 
+        // in the following, data is assigned to $scope.proj, which is bounded
+        // with proj.name, proj.description etc in index.html
+        
         $http({
             method: method,
             url: url,
