@@ -102,7 +102,7 @@ function init() {
 		// document is not ready yet to make a canvas
 		return;
 	}
-	console.log("asdf canvas=" + canvas);
+//	console.log("asdf canvas=" + canvas);
 
 	ctx = canvas.getContext('2d');
 	x = 0;

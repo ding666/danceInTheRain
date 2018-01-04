@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <meta charset="UTF-8"> 
+    <meta charset="UTF-8">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -60,7 +60,8 @@
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
-                    Menu <i class="fa fa-bars"></i>
+                    Menu
+                    <i class="fa fa-bars"></i>
                 </button>
                 <!-- <a class="navbar-brand page-scroll" href="#page-top">
                     <i class="fa fa-play-circle"></i> <span class="light">Melody</span>
@@ -128,14 +129,16 @@
 
                         <div style="padding: 3% 1% 1px 1%">
                             <div class="pledge">
-                                <b>Love Myself</b><br> <br>I am going to love myself, forgive myself, respect myself and be true to myself. 
-                                I will take care of my body and keep it
-                                away from drugs, alcohol and any unhealthy habits. I will be conscious of my feelings, my
-                                mind and get help if I need it.
+                                <b>Love Myself</b>
+                                <br>
+                                <br>I am going to love myself, forgive myself, respect myself and be true to myself. I will take
+                                care of my body and keep it away from drugs, alcohol and any unhealthy habits. I will be
+                                conscious of my feelings, my mind and get help if I need it.
                             </div>
                         </div>
                         <button ng-click="Ipledge(1)" class="btn btn-default btn-lg pledge-button">I pledge</button>
-                        <br><br>
+                        <br>
+                        <br>
                         <div align="center">
                             <fieldset class="fieldset">
 
@@ -148,13 +151,19 @@
                     <div class="col-lg-6">
                         <div style="padding: 3% 1% 1px 1%">
                             <div class="pledge">
-                                <b>Help Others</b><br> <br>
-                                I will help others in my daily life by doing good for my friends, my neighbors, my community and the world.
-                                <br><br><br><br>
+                                <b>Help Others</b>
+                                <br>
+                                <br> I will help others in my daily life by doing good for my friends, my neighbors, my community
+                                and the world.
+                                <br>
+                                <br>
+                                <br>
+                                <br>
                             </div>
                         </div>
                         <button ng-click="Ipledge(2)" class="btn btn-default btn-lg pledge-button">I pledge</button>
-                        <br><br>
+                        <br>
+                        <br>
                         <div align="center">
                             <fieldset class="fieldset">
 
@@ -220,17 +229,17 @@
                             <h4>Your Information</h4>
 
                             <div>
-                                <input ng-model="proj.firstName" type="text" placeholder="First name" style="padding-left: 10px; background-color: #114444">
-                                <input ng-model="proj.lastName" type="text" placeholder="Last name" style="padding-left: 10px; background-color: #114444">
+                                <input ng-model="proj.joinFirstName" type="text" placeholder="First name" style="padding-left: 10px; background-color: #114444">
+                                <input ng-model="proj.joinLastName" type="text" placeholder="Last name" style="padding-left: 10px; background-color: #114444">
                             </div>
 
-                            <input ng-model="proj.email" type="text" placeholder="email" style="padding-left: 10px; background-color: #114444">
-                            <input ng-model="proj.phone" type="text" placeholder="Phone, e.g. 123-456-7890" style="padding-left: 10px; background-color: #114444">
+                            <input ng-model="proj.joinEmail" type="text" placeholder="email" style="padding-left: 10px; background-color: #114444">
+                            <input ng-model="proj.joinPhone" type="text" placeholder="Phone, e.g. 123-456-7890" style="padding-left: 10px; background-color: #114444">
                             <br>
 
-                            <input ng-model="proj.city" type="text" placeholder="city" style="padding-left: 10px; background-color: #114444">
-                            <input ng-model="proj.state" type="text" placeholder="state, e.g. NJ" style="padding-left: 10px; background-color: #114444">
-                            <input ng-model="proj.country" type="text" placeholder="Country, e.g. USA" style="padding-left: 10px; background-color: #114444">
+                            <input ng-model="proj.joinCity" type="text" placeholder="city" style="padding-left: 10px; background-color: #114444">
+                            <input ng-model="proj.joinState" type="text" placeholder="state, e.g. NJ" style="padding-left: 10px; background-color: #114444">
+                            <input ng-model="proj.joinCountry" type="text" placeholder="Country, e.g. USA" style="padding-left: 10px; background-color: #114444">
                             <br>
                         </form>
                     </fieldset>
@@ -247,8 +256,10 @@
                         <legend>Initiate A Project</legend>
                         <form action="">
                             <p style="text-align: left; padding-left: 10px; padding-bottom: 0px; margin-bottom: 10px">Project Name:</p>
-                            <div align="left"> <input ng-model="proj.projName" type="text" size="90%" style="padding-left: 10px; background-color: #114444"
-                                    placeholder="Input project name here"></div>
+                            <div align="left">
+                                <input ng-model="proj.projName" type="text" size="90%" style="padding-left: 10px; background-color: #114444"
+                                    placeholder="Input project name here">
+                            </div>
 
                             <p style="text-align: left; padding-left: 10px; margin-top: 20px; margin-bottom: 10px"> Project Description:</p>
 
@@ -292,7 +303,30 @@
                             <h4 class="modal-title" style="color:black">Project is Saved</h4>
                         </div>
                         <div class="modal-body" style="color:black">
-                            <p>Your project, <b>{{projName}}</b>, was saved.</p>
+                            <p>Your project,
+                                <b>{{projName}}</b>, was saved.</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- join project Modal -->
+            <div class="modal fade" id="joinProjModal" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title" style="color:black">Thank you for joining the project</h4>
+                        </div>
+                        <div class="modal-body" style="color:black">
+                            <p>Your name 
+                                <b>{{proj.joinFirstName}} {{proj.joinLastName}}</b>, has been added to the project. The project owner will contact you.</p>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -311,17 +345,27 @@
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>Contact Melody</h2>
                 <p>Feel free to email us to provide some feedback on our pages, or just say hello!</p>
-                <p><a href="mailto:melodyding@gmail.com">melodyding@gmail.com</a>
+                <p>
+                    <a href="mailto:melodyding@gmail.com">melodyding@gmail.com</a>
                 </p>
                 <ul class="list-inline banner-social-buttons">
                     <li>
-                        <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
+                        <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg">
+                            <i class="fa fa-twitter fa-fw"></i>
+                            <span class="network-name">Twitter</span>
+                        </a>
                     </li>
                     <li>
-                        <a href="https://github.com/ding666/danceInTheRain" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
+                        <a href="https://github.com/ding666/danceInTheRain" class="btn btn-default btn-lg">
+                            <i class="fa fa-github fa-fw"></i>
+                            <span class="network-name">Github</span>
+                        </a>
                     </li>
                     <li>
-                        <a href="https://plus.google.com/+Startbootstrap/posts" class="btn btn-default btn-lg"><i class="fa fa-google-plus fa-fw"></i> <span class="network-name">Google+</span></a>
+                        <a href="https://plus.google.com/+Startbootstrap/posts" class="btn btn-default btn-lg">
+                            <i class="fa fa-google-plus fa-fw"></i>
+                            <span class="network-name">Google+</span>
+                        </a>
                     </li>
                 </ul>
             </div>

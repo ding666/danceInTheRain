@@ -25,7 +25,7 @@ app.factory('responseObserver', function responseObserver($q, $window) {
 app.factory('crudDB', function ($http) {
     var factory = {};
     factory.getPledgeN = function () {
-        console.log("called getPledgeN");
+  //      console.log("called getPledgeN");
         return $http.get("getPledgeN.php");
 
         // $http.get("getPledgeN.php")
@@ -82,22 +82,68 @@ app.controller('rainCtrl', function ($scope, $http, crudDB) {
 
     $scope.hideProjList = false;
     //     $scope.showCreateProj = true;
-    console.log("Inside controller");
+    // console.log("Inside controller");
     $http.get("listProjects.php")
         .then(function (response) {
-            console.log(response);
+     //       console.log(response);
             $scope.projects = response.data;
         });
 
     $scope.projDetail = function (id) {
-        console.log(id);
+  //      console.log(id);
         $scope.showJoinProj = true;
         $http.get("projDetail.php?id=" + id)
             .then(function (response) {
-                console.log("project detail:")
-                console.log(response);
+   //             console.log("project detail:")
+   //             console.log(response);
+                $scope.proj = {};
                 $scope.projInfo = response.data;
             });
+    }
+
+    $scope.joinProj = function () {
+        console.log( "asdf in joinProj");
+        console.log ("id =", $scope.projInfo.id); 
+        console.log("proj=", $scope.projInfo);
+    
+        var paraObj = $scope.proj;
+        paraObj.projID = $scope.projInfo.id; 
+     
+        var method = 'POST';
+        var url = 'joinProject.php';
+        $scope.codeStatus = "";
+
+        // in the following, data is assigned to $scope.proj, which is bounded
+        // with proj.name, proj.description etc in index.html
+        
+        $http({
+            method: method,
+            url: url,
+            data: paraObj,
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+        }).then(function (response) {
+            console.log("respnse=");
+            console.log(response);
+            if (response.status == "200") {
+                $http.get("joinProject.php")
+                    .then(function (response) {
+                        console.log(response);
+  //                      $scope.projects = response.data;
+                    });
+                $scope.showModal = true;
+                console.log("show modal");
+                $scope.showCreateProj = false;
+                $scope.hideProjList = false;
+                $scope.showJoinProj = false;
+                $scope.showJoinedProj = false;
+
+                $("#joinProjModal").modal();
+  //              $scope.projName = response.config.data.projName;
+                    console.log("asdf passed data=", response.config.data)
+            }
+
+        });
+        return false;
     }
 
     $scope.cancelJoinProj = function () {
@@ -144,10 +190,7 @@ app.controller('rainCtrl', function ($scope, $http, crudDB) {
             }
 
         });
-
-
         return false;
-
     }
 
     $scope.cancelProj = function () {
