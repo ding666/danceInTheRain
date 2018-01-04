@@ -94,8 +94,8 @@ app.controller('rainCtrl', function ($scope, $http, crudDB) {
         $scope.showJoinProj = true;
         $http.get("projDetail.php?id=" + id)
             .then(function (response) {
-   //             console.log("project detail:")
-   //             console.log(response);
+                console.log("project detail:")
+                console.log(response);
                 $scope.proj = {};
                 $scope.projInfo = response.data;
             });
@@ -147,7 +147,7 @@ app.controller('rainCtrl', function ($scope, $http, crudDB) {
     }
 
     $scope.cancelJoinProj = function () {
-        console.log("asdf");
+  //      console.log("asdf");
         $scope.showJoinProj = false; 
     }
 

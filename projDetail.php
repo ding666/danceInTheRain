@@ -6,7 +6,7 @@ $password = "melody123";
 $dbname = "lehmannp_dance";
 
 $id = $_GET['id'];
- // $id = 1;
+//  $id = 2;
 
 // echo json_encode($proj);
 // exit(200);
@@ -48,7 +48,37 @@ $owner->country = $row["country"];
 
 $proj->owner = $owner;
 
-echo json_encode($proj);
+// to get all the participants
+
+
+$sql = "select first_name, last_name from people join proj_people on people.id = proj_people.peopleID
+where  proj_people.projID = $id and proj_people.owner = false";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    $proj->joiners = array();
+    // output data of each row
+    // echo "{\"records\":[";
+    while($row = $result->fetch_assoc()) {
+        $joiner = new stdClass(); // create a new odbc_fetch_object
+        $joiner->firstName= $row["first_name"];
+        $joiner->lastName = $row["last_name"];
+        array_push($proj->joiners,$joiner);
+
+  //      echo "$joiner->firstName\n";
+        // echo "{";
+        // echo "\"id\": \" " . $row["id"] . "\",";
+        // echo "\"name\":\" " . $row["name"] . "\",";
+        // echo "\"description\":\" " . $row["description"]. "\"";
+        // echo "}, "; 
+    }
+    // echo "]}"; 
+    echo json_encode($proj);
+} else {
+    echo json_encode($proj);
+}
+
+
 
 
 exit(200);

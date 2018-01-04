@@ -211,18 +211,24 @@
                 <button type="button" ng-click="createProj()" class="btn btn-primary" style="margin: 15px">Create your own project</button>
             </div>
             <div ng-show="showJoinProj" id="popupJoinProj">
-                <div align="center">
+                <div align="left">
                     <fieldset style="border: 3px white solid;">
                         <legend>Join A Project</legend>
 
 
-                        <p>Project Name: {{projInfo.name}}</p>
-                        <p>Project Description: {{projInfo.description}}</p>
+                        <p> <font color="coral">Project Name: </font>{{projInfo.name}} 
+                        <p><font color="coral">Project Description:</font> {{projInfo.description}}</p>
 
-                        <p>Project Owner:</p>
-                        <p>{{projInfo.owner.firstName}} {{projInfo.owner.lastName}}</p>
-                        <p>{{projInfo.owner.email}}, {{projInfo.owner.phone}} </p>
-                        <p>{{projInfo.owner.city}}, {{projInfo.owner.state}}, {{projInfo.owner.country}}</p>
+                        <p><font color="coral">Project Owner:</font>
+                        {{projInfo.owner.firstName}} {{projInfo.owner.lastName}}<br>
+                        {{projInfo.owner.email}}, {{projInfo.owner.phone}} <br>
+                        {{projInfo.owner.city}}, {{projInfo.owner.state}}, {{projInfo.owner.country}}</p>
+
+                        <p><font color="coral">Project Paticipants:</font><br>
+                        <div ng-repeat="x in projInfo.joiners">
+                            {{x.firstName}} {{x.lastName}}
+                        </div>
+                        </p>
 
                         <form action="">
 
