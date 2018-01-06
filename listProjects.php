@@ -12,7 +12,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
-$sql = "SELECT id, name, description FROM projects";
+$sql = "SELECT id, name, location, description FROM projects";
 $result = $conn->query($sql);
 
 $list=array(); //instantiate the array 
@@ -24,6 +24,7 @@ if ($result->num_rows > 0) {
         $proj = new stdClass(); // create a new odbc_fetch_object
         $proj->id = $row["id"];
         $proj->name = $row["name"];
+        $proj->location = $row["location"];
         $proj->description = $row["description"];
         array_push($list,$proj);
 

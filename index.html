@@ -195,6 +195,7 @@
                     <thead>
                         <tr>
                             <th>Name</th>
+                            <th>Location</th>
                             <th>Description</th>
                         </tr>
                     </thead>
@@ -204,6 +205,7 @@
                                 <u>{{ x.name }}</u>
                             </a>
                         </td>
+                        <td align="left">{{x.location}}</td>
                         <td align="left">{{ x.description }}</td>
                     </tr>
                 </table>
@@ -264,13 +266,19 @@
                             <p style="text-align: left; padding-left: 10px; padding-bottom: 0px; margin-bottom: 10px">Project Name:</p>
                             <div align="left">
                                 <input ng-model="proj.projName" type="text" size="90%" style="padding-left: 10px; background-color: #114444"
-                                    placeholder="Input project name here">
+                                    placeholder="use a descriptive name">
+                            </div>
+                            
+                            <p style="text-align: left; padding-left: 10px; padding-bottom: 0px; margin-bottom: 10px">Project Location:</p>
+                            <div align="left">
+                                <input ng-model="proj.projLocation" type="text" size="90%" style="padding-left: 10px; background-color: #114444"
+                                    placeholder=' For example, "Internet", "Madison, NJ, USA" '>
                             </div>
 
                             <p style="text-align: left; padding-left: 10px; margin-top: 20px; margin-bottom: 10px"> Project Description:</p>
 
                             <div align="left">
-                                <textarea rows="8" cols="80" style="background-color: #114444" ng-model="proj.projDescription" placeholder="Pust project description here.">
+                                <textarea rows="8" cols="80" style="background-color: #114444" ng-model="proj.projDescription" placeholder="Put more detailed project description.">
                             </textarea>
                             </div>
                             <p></p>

@@ -38,8 +38,8 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 
-$sql = "INSERT INTO projects (name, description) 
-VALUES (\"$data->projName\", \"$data->projDescription\")";
+$sql = "INSERT INTO projects (name, location, description) 
+VALUES (\"$data->projName\", \"$data->projLocation\", \"$data->projDescription\")";
 
 if ($conn->query($sql) === TRUE) {
     $projDBrecordAdded = TRUE;
